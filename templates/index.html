@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <h1>AI-Powered Task Scheduling</h1>
+    <p>Let artificial intelligence create the perfect schedule for your tasks, projects, and study plans.</p>
+    <a href="#schedule-form" class="btn btn-primary">Create Your Schedule Now</a>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <i class="fas fa-brain"></i>
+    <h3>Smart Planning</h3>
+    <p>Our AI analyzes your task requirements to create optimal schedules.</p>
+  </div>
+  <div class="feature-card">
+    <i class="fas fa-calendar-alt"></i>
+    <h3>Daily Breakdown</h3>
+    <p>Get a clear day-by-day plan with manageable chunks of work.</p>
+  </div>
+  <div class="feature-card">
+    <i class="fas fa-clock"></i>
+    <h3>Time Management</h3>
+    <p>Never miss a deadline with our intelligent time allocation.</p>
+  </div>
+</section>
+
+<section id="schedule-form" class="schedule-form">
+  <h2>Create Your AI Schedule</h2>
+  <p class="subtitle">Fill in the details below to generate your personalized schedule</p>
+  
+  <form method="POST" action="/generate">
+    <div class="form-group">
+      <label for="task">Task/Project Name*</label>
+      <input type="text" id="task" name="task" value="{{ task if task }}" required placeholder="e.g., 'Learn Python', 'Complete Marketing Project'">
+    </div>
+    
+    <div class="form-group">
+      <label for="days">Deadline (in days)*</label>
+      <input type="number" id="days" name="days" value="{{ days if days }}" required min="1" placeholder="  How many days do you have?">
+      {% if deadline_date %}
+      <p class="deadline-date">Deadline Date: {{ deadline_date }}</p>
+      {% endif %}
+    </div>
+    
+    <div class="form-group">
+      <label for="prompt">Additional Details (Optional)</label>
+      <textarea id="prompt" name="prompt" rows="5" placeholder="Any specific requirements, topics to cover, or notes for the AI...">{{ prompt if prompt }}</textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-primary btn-large">
+      <i class="fas fa-magic"></i> Generate Schedule
+    </button>
+  </form>
+</section>
+
+{% if result %}
+<section class="result-section">
+  <div class="result-header">
+    <h2>Your AI-Generated Schedule</h2>
+    {% if task %}
+    <h3>{{ task }}</h3>
+    {% endif %}
+    {% if deadline_date %}
+    <p class="deadline-badge">Deadline: {{ deadline_date }}</p>
+    {% endif %}
+  </div>
+  
+  <div class="result-content">
+    {{ result | safe }}
+  </div>
+  
+  <div class="result-actions">
+    <button class="btn btn-secondary" onclick="window.print()">
+      <i class="fas fa-print"></i> Print Schedule
+    </button>
+    <button class="btn btn-secondary" onclick="copyToClipboard()">
+      <i class="fas fa-copy"></i> Copy to Clipboard
+    </button>
+  </div>
+</section>
+
+<script>
+function copyToClipboard() {
+  const resultContent = document.querySelector('.result-content');
+  const range = document.createRange();
+  range.selectNode(resultContent);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+  
+  alert('Schedule copied to clipboard!');
+}
+</script>
+{% endif %}
+
+<section class="how-it-works">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Enter Your Task</h3>
+      <p>Tell us what you need to accomplish and your deadline.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>AI Analysis</h3>
+      <p>Our advanced AI processes your requirements.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Get Your Schedule</h3>
+      <p>Receive a detailed, day-by-day plan to achieve your goal.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

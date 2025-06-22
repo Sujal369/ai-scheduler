@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Scheduler - Smart Task Planning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <a href="/"><i class="fas fa-robot"></i> AI Scheduler</a>
+        </div>
+        <div class="nav-links">
+          <a href="/"><i class="fas fa-home"></i> Home</a>
+          <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+          <a href="/coffee"><i class="fas fa-mug-hot"></i> Support</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About AI Scheduler</h3>
+          <p>Transform your productivity with AI-powered task planning and scheduling.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/coffee">Support Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/Sujal369"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/sujal-lothe-547138260/"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025-26 AI Scheduler. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

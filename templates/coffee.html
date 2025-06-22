@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="support-section">
+  <div class="support-header">
+    <h1>Support AI Scheduler</h1>
+    <p>If you find this tool helpful, consider supporting its development</p>
+  </div>
+  
+  <div class="support-options">
+    <div class="support-card">
+      <i class="fas fa-coffee"></i>
+      <h3>Buy Me a Coffee</h3>
+      <p>Show your appreciation with a small donation</p>
+      <div class="qr-container">
+        <img src="{{ url_for('static', filename='qr.png') }}" alt="UPI QR Code">
+        <p class="upi-id">9850307734@ybl</p>
+      </div>
+    </div>
+    
+    <div class="support-card">
+      <i class="fab fa-github"></i>
+      <h3>Contribute on GitHub</h3>
+      <p>Help improve the project with your code contributions</p>
+      <a href="https://github.com/Sujal369" class="btn btn-secondary">View Repository</a>
+    </div>
+    
+    <div class="support-card">
+      <i class="fas fa-share-alt"></i>
+      <h3>Spread the Word</h3>
+      <p>Tell others about AI Scheduler</p>
+      <div class="social-share">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/sujal-lothe-547138260/"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="testimonials">
+    <h2>Contributors</h2>
+    <div class="testimonial">
+      <p>"Lorem"</p>
+      <p class="author">- Sai Lothe, Student</p>
+    </div>
+    <div class="testimonial">
+      <p>"As a project manager, this tool saves me hours of planning time each week."</p>
+      <p class="author">- Michael, Project Manager</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
