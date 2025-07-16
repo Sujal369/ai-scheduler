@@ -19,6 +19,9 @@ def ads_txt():
     return send_from_directory('static', 'ads.txt', mimetype='text/plain')
 
 #changes end
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
 
 def format_schedule_response(response_text):
     """Format the AI response into clean HTML structure"""
