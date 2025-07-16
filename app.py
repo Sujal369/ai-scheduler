@@ -11,6 +11,15 @@ app = Flask(__name__)
 # Initialize Together.ai client
 client = Together(api_key=os.getenv("TOGETHER_API_KEY"))
 
+#changes here
+from flask import send_from_directory
+
+@app.route('/ads.txt')
+def ads_txt():
+    return send_from_directory('static', 'ads.txt', mimetype='text/plain')
+
+#changes end
+
 def format_schedule_response(response_text):
     """Format the AI response into clean HTML structure"""
     if "Day 1" in response_text:
